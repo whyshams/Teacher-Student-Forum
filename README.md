@@ -8,4 +8,4 @@ Using centralized data store, Redux toolkit.
  A MERN stack JWT authentication boilerplate by Nuren Shams Chowdhury with centralized data store
 
 
-# hosted in https://authentication-szar.onrender.com/
+# hosted in https://teacher-student-forum.onrender.com/
