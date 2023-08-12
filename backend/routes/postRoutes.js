@@ -7,6 +7,7 @@ import {
   createComment,
   editPost,
   deletePost,
+  getPostById,
 } from "../controllers/postController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import multer from "multer";
@@ -29,6 +30,7 @@ router.post("/", protect, upload.single("picture"), createPost);
 //Read
 router.get("/", protect, getFeedPosts);
 router.get("/:userId/posts", protect, getUserPosts);
+router.get("/:id", protect, getPostById);
 
 // UPDATE
 router.put("/edit", protect, upload.single("picture"), editPost);

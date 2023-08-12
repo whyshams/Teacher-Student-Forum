@@ -30,10 +30,24 @@ export const postApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    singlePost: builder.mutation({
+      query: (id) => ({
+        url: `${Base_Url}/${id}`,
+        method: "GET",
+      }),
+    }),
+    userPosts: builder.mutation({
+      query: (userId) => ({
+        url: `${Base_Url}/${userId}/posts`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
 export const {
+  useUserPostsMutation,
+  useSinglePostMutation,
   useGetAllPostMutation,
   useCreatePostMutation,
   useUpdatePostMutation,

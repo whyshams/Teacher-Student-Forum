@@ -8,6 +8,8 @@ import FormikForm from "./pages/FormikForm";
 import { ContextProvider } from "./context/MainContext";
 import Profile from "./pages/Profile";
 import Update from "./pages/ProfileUpdate";
+import SinglePost from "./pages/SinglePost";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path="" element={<ProtectedComp />}>
               <Route path="/profile" element={<Profile />} />
               <Route path="/update-profile" element={<Update />} />
+              <Route path="/singlepost" element={<SinglePost />} />
+              <Route path="/user/:userId" element={<UserProfile />} />
             </Route>
           </Route>
         </Routes>

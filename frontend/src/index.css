@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Angkor&family=Ubuntu&display=swap");
+
 * {
   font-family: "Ubuntu", sans-serif;
 }
@@ -118,6 +119,7 @@ header {
   background-color: white;
   z-index: 1;
   padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .searchDiv input {
@@ -127,10 +129,11 @@ header {
   border-radius: 4px;
 }
 .createPost {
-  margin-left: 10px;
+  margin-left: 30px;
 }
 .searchDiv {
   margin-right: 10px;
+  margin-left: 10px;
 }
 .searchRes {
   margin-top: 20px;
@@ -157,13 +160,25 @@ header {
   object-fit: cover;
   object-position: center center;
 }
-img {
+.searchImg {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center center;
+}
+.postsImage {
   width: 360px;
   height: 360px;
   border-radius: 15px;
   object-fit: cover;
   object-position: center center;
 }
+.singlepostimage {
+  width: 500;
+  height: 100vh;
+}
+
 .commentArea {
   width: 100%;
   height: auto;
@@ -181,6 +196,7 @@ img {
   border-radius: 10px;
   padding: 5px;
 }
+
 @media screen and (max-width: 480px) {
   .updatePost textarea {
     width: 250px;
@@ -214,17 +230,23 @@ img {
     margin-top: 20px;
   }
   .createPost {
-    margin: 0;
+    margin-left: 0px;
+    margin-right: 0px;
   }
 
   .searchDiv {
     margin-right: 0px;
+    margin-left: 0px;
   }
-  img {
+  .postsImage {
     width: 300px;
     height: 300px;
     border-radius: 15px;
     object-fit: cover;
     object-position: center center;
+  }
+  .singlepostimage {
+    width: 100%;
+    height: auto;
   }
 }

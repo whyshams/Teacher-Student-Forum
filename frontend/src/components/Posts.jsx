@@ -1,18 +1,24 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useSelector } from "react-redux";
-import { useGetAllPostMutation } from "../slices/postSlice";
+import {
+  useGetAllPostMutation,
+  useSinglePostMutation,
+} from "../slices/postSlice";
 import Post from "./Post";
 import Loading from "./Loading";
 import Search from "./Search";
 import CreatePost from "./CreatePost";
 import MainContext from "../context/MainContext";
+import { useNavigate } from "react-router-dom";
 
 const Posts = () => {
-  const { postsUpdated } = useContext(MainContext);
+  const { postsUpdated, setSinglePostData } = useContext(MainContext);
+  const navigate = useNavigate();
   const [postData, setPostData] = useState();
   const { userData } = useSelector((state) => state.auth);
 
   const [getAllPost, { isLoading }] = useGetAllPostMutation();
+  const [singlePost] = useSinglePostMutation();
   const getPosts = async () => {
     try {
       const res = await getAllPost().unwrap();
@@ -21,6 +27,7 @@ const Posts = () => {
       console.log(err);
     }
   };
+
   useEffect(() => {
     getPosts();
   }, [postsUpdated]);
@@ -30,7 +37,7 @@ const Posts = () => {
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
   return (
-    <div className="container">
+    <div className="">
       {orderedPosts && (
         <div className="d-block d-md-flex justify-content-between">
           <div className="col-md-3 mt-3 ">

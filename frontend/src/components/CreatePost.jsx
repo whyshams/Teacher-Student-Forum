@@ -48,9 +48,10 @@ const CreatePost = () => {
     <div className="">
       <Card className="p-4 createPost">
         <h1>Create a post </h1>
-        <Card className="p-4 ">
+        <Card className="p-3 ">
           <div className="">
             <textarea
+              placeholder="what's on your mind"
               className="postInput"
               onChange={(e) => setPost(e.target.value)}
               value={post}

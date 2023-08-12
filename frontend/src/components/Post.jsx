@@ -6,15 +6,20 @@ import { useSelector } from "react-redux";
 import MainContext from "../context/MainContext";
 import { BsHandThumbsUp, BsHandThumbsUpFill } from "react-icons/bs";
 import { BiComment } from "react-icons/bi";
+import { useNavigate, Link } from "react-router-dom";
+import { useSinglePostMutation } from "../slices/postSlice";
+import SinglePost from "../pages/SinglePost";
 
 const Post = ({ post }) => {
-  //const backendUrl = "http://localhost:5000";
   const [commentOpen, setCommentOpen] = useState(false);
-  const [isLiked, setIsLike] = useState(false);
+
   const numberOfLikes = Object.keys(post.likes).length;
   console.log(post);
+  const navigate = useNavigate();
+  const [singlePost] = useSinglePostMutation();
   const { userData } = useSelector((state) => state.auth);
-  const { postsUpdated, setPostsUpdated } = useContext(MainContext);
+  const { postsUpdated, setPostsUpdated, setSinglePostData } =
+    useContext(MainContext);
 
   const postLikeHandle = async () => {
     try {
@@ -28,6 +33,11 @@ const Post = ({ post }) => {
     }
   };
 
+  const singlePostReq = () => {
+    setSinglePostData(post);
+    navigate("/singlepost");
+  };
+
   const orderedComments = post.comments
     ?.slice()
     .sort((a, b) => b.createdAt.localeCompare(a.createdAt));
@@ -37,17 +47,26 @@ const Post = ({ post }) => {
       <Card className="">
         <div className="d-flex flex-column p-3">
           <div className="d-flex flex-row">
-            <div className="p-2">
-              <img
-                className="postImage"
-                src={`/assets/${post.userPicturePath}`}
-              />
-            </div>
-            <p className="p-3">{post.name}</p>
+            <Link to={`/user/${post.userId}`}>
+              <div className="p-2">
+                <img
+                  className="postImage"
+                  src={`/assets/${post.userPicturePath}`}
+                />
+                <strong className="p-3">{post.name}</strong>
+              </div>
+            </Link>
           </div>
-          <p>{post.description}</p>
-          <div className="d-center">
-            {post.picturePath && <img src={`/assets/${post.picturePath}`} />}
+          <div onClick={singlePostReq}>
+            <p>{post.description}</p>
+            <div className="d-center">
+              {post.picturePath && (
+                <img
+                  className="postsImage"
+                  src={`/assets/${post.picturePath}`}
+                />
+              )}
+            </div>
           </div>
         </div>
         <div className="d-flex justify-content-around align-items-center p-5">

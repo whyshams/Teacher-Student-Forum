@@ -16,7 +16,6 @@ const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
   const [editClicked, setEditClicked] = useState(false);
 
-  // const backendUrl = "http://localhost:5000";
   const [deletePost] = useDeletePostMutation();
 
   const numberOfLikes = Object.keys(post.likes).length;
@@ -79,7 +78,10 @@ const Post = ({ post }) => {
               <p>{post.description}</p>
               <div className="d-center">
                 {post.picturePath && (
-                  <img src={`/assets/${post.picturePath}`} />
+                  <img
+                    className="postsImage"
+                    src={`/assets/${post.picturePath}`}
+                  />
                 )}
               </div>
             </div>

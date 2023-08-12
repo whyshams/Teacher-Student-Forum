@@ -7,6 +7,7 @@ import {
   getUserProfile,
   updateUserProfile,
   deleteUser,
+  getUser,
 } from "../controllers/userController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import multer from "multer";
@@ -27,8 +28,9 @@ router.post("/logout", userLogout);
 router
   .route("/profile")
   .get(protect, getUserProfile)
-  .put(protect, upload.single("picture"), updateUserProfile);
 
+  .put(protect, upload.single("picture"), updateUserProfile);
+router.get("/profile/:userId", getUser);
 router.delete("/delete", protect, deleteUser);
 
 export default router;

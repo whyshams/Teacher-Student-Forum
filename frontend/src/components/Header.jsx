@@ -13,7 +13,7 @@ import MainContext from "../context/MainContext";
 const Header = () => {
   const { allPostsData } = useContext(MainContext);
   console.log(allPostsData);
-  //const backendUrl = "http://localhost:5000";
+
   const { userData } = useSelector((state) => state.auth);
 
   const [logoutApi] = useLogoutApiMutation();
@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   return (
-    <header className="container">
+    <header className="">
       {userData ? (
         <>
           <Navbar className="d-md-flex d-block justify-content-between ">

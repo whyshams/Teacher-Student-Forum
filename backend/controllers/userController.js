@@ -72,8 +72,28 @@ const userLogout = asyncHandler(async (req, res) => {
 });
 
 //private
+
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.body._id);
+
+  if (user) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      username: user.username,
+      picturePath: user.picturePath,
+    });
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
+//get user by id
+
+const getUser = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.userId);
 
   if (user) {
     res.json({
@@ -137,6 +157,7 @@ const deleteUser = async (req, res) => {
 };
 
 export {
+  getUser,
   deleteUser,
   userAuth,
   userRegister,
