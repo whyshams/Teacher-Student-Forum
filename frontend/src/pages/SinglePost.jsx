@@ -12,7 +12,6 @@ const SinglePost = () => {
   const { singlePostData, postsUpdated, setPostsUpdated, setSinglePostData } =
     useContext(MainContext);
 
-  const backendUrl = "http://localhost:5000";
   const [commentOpen, setCommentOpen] = useState(false);
   const [isLiked, setIsLike] = useState(false);
   const [data, setData] = useState(singlePostData);
@@ -58,7 +57,7 @@ const SinglePost = () => {
             <div className="p-2">
               <img
                 className="postImage"
-                src={`${backendUrl}/assets/${data.userPicturePath}`}
+                src={`/assets/${data.userPicturePath}`}
               />
             </div>
             <p className="p-3">{data.name}</p>
@@ -68,7 +67,7 @@ const SinglePost = () => {
             {data.picturePath && (
               <img
                 className="singlepostimage "
-                src={`${backendUrl}/assets/${data.picturePath}`}
+                src={`/assets/${data.picturePath}`}
               />
             )}
           </div>

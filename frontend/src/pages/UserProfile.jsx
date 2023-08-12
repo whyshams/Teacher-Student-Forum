@@ -50,7 +50,7 @@ const UserProfile = () => {
             <div className="mt-5">
               <img
                 className="profilePageImage"
-                src={`http://localhost:5000/assets/${userData?.picturePath}`}
+                src={`/assets/${userData?.picturePath}`}
               />
             </div>
             <div className="d-flex flex-row d-center mt-2">
