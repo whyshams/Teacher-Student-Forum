@@ -9,6 +9,7 @@ import { BiComment } from "react-icons/bi";
 import { useNavigate, Link } from "react-router-dom";
 import { useSinglePostMutation } from "../slices/postSlice";
 import SinglePost from "../pages/SinglePost";
+import moment from "moment";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -67,9 +68,12 @@ const Post = ({ post }) => {
                 />
               )}
             </div>
+            <p className="mt-3 text-muted">
+              Posted {moment(post.createdAt).fromNow()}
+            </p>
           </div>
         </div>
-        <div className="d-flex justify-content-around align-items-center p-5">
+        <div className="d-flex justify-content-around align-items-center p-4">
           <button className="likeButton" onClick={postLikeHandle}>
             {post.likes[userData._id] === true ? (
               <div>

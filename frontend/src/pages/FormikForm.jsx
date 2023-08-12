@@ -111,7 +111,7 @@ const FormikForm = () => {
         setFieldValue,
         resetForm,
       }) => (
-        <div>
+        <div className="screen">
           <form className="login-form text-center" onSubmit={handleSubmit}>
             {isRegister && (
               <div className="d-flex flex-column justify-content-center align-items-center">
@@ -122,8 +122,13 @@ const FormikForm = () => {
                   value={values.name}
                   name="name"
                 />
-                <select name="role" onChange={handleChange} value={values.role}>
-                  <option value="">Select a Role</option>
+                <select
+                  className="select"
+                  name="role"
+                  onChange={handleChange}
+                  value={values.role}
+                >
+                  <option value="">Login as</option>
                   <option value="teacher">Teacher</option>
                   <option value="student">Student</option>
 
@@ -149,9 +154,9 @@ const FormikForm = () => {
                     <div {...getRootProps()}>
                       <input {...getInputProps()} />
                       {!values.picture ? (
-                        <p>Add Picture</p>
+                        <p className="dropzone">Add Picture</p>
                       ) : (
-                        <p>{values.picture.name}</p>
+                        <p className="dropzone">{values.picture.name}</p>
                       )}
                     </div>
                   )}
@@ -174,10 +179,11 @@ const FormikForm = () => {
                 name="password"
               />
             </div>
-            <button className="btn-primary btn" type="submit">
+            <button className="btn btn-dark" type="submit">
               {isLogin ? "LOGIN" : "REGISTER"}
             </button>
             <p
+              className="signuplink"
               onClick={() => {
                 setPageType(isLogin ? "register" : "login");
               }}

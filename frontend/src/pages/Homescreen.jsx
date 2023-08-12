@@ -19,18 +19,19 @@ const Homescreen = () => {
             <Posts />
           </div>
         ) : (
-          <Card className="cardupdate p-4 m-4 rounded-full">
-            <h4 className="d-flex flex-wrap">
-              CRUD operation with JWT authentication using React Js for the Web
-              and React Native for Android and IOS app , MongoDB as Database and
-              Node js framework Express JS to create API
-            </h4>
-            <div className="d-flex justify-content-around homebutton">
-              <div className="home-button">
-                <Link to="/login">Login</Link>
+          <div className="d-center">
+            <Card className="cardupdate p-4 m-4 rounded-full screen">
+              <h4 className="d-flex text-center ">
+                A hypothetical Teacher Student Forum where teacher can post and
+                students can only like and comment
+              </h4>
+              <div className="d-flex justify-content-around homebutton">
+                <div className="home-button">
+                  <Link to="/login">Login</Link>
+                </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </div>
         )}
       </div>
     </div>

@@ -93,7 +93,10 @@ const Update = () => {
         resetForm,
       }) => (
         <div>
-          <form className="login-form text-center" onSubmit={handleSubmit}>
+          <form
+            className=" screen login-form text-center"
+            onSubmit={handleSubmit}
+          >
             <div className="d-flex flex-column justify-content-center align-items-center">
               <input
                 placeholder="Name"
@@ -102,7 +105,12 @@ const Update = () => {
                 value={values.name}
                 name="name"
               />
-              <select name="role" onChange={handleChange} value={values.role}>
+              <select
+                className="select"
+                name="role"
+                onChange={handleChange}
+                value={values.role}
+              >
                 <option value="">Select a Role</option>
                 <option value="teacher">Teacher</option>
                 <option value="student">Student</option>
@@ -143,9 +151,9 @@ const Update = () => {
                   <div {...getRootProps()}>
                     <input {...getInputProps()} />
                     {!values.picture ? (
-                      <p>Add Picture</p>
+                      <p className="dropzone">Add Picture</p>
                     ) : (
-                      <p>Change Profile picture</p>
+                      <p className="dropzone">Change Profile Photo</p>
                     )}
                   </div>
                 )}

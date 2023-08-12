@@ -11,6 +11,7 @@ import { useDeletePostMutation } from "../slices/postSlice";
 import { toast } from "react-toastify";
 import { BsHandThumbsUp, BsHandThumbsUpFill } from "react-icons/bs";
 import { BiComment } from "react-icons/bi";
+import moment from "moment";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
@@ -84,8 +85,11 @@ const Post = ({ post }) => {
                   />
                 )}
               </div>
+              <p className="mt-3 text-muted">
+                Posted {moment(post.createdAt).fromNow()}
+              </p>
             </div>
-            <div className="d-flex justify-content-around align-items-center p-5">
+            <div className="d-flex justify-content-around align-items-center p-4">
               <button className="likeButton" onClick={postLikeHandle}>
                 {post.likes[userData._id] === true ? (
                   <div>
