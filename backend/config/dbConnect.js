@@ -1,8 +1,4 @@
 import mongoose from "mongoose";
-import { users } from "../demoData/Data.js";
-import User from "../models/userModel.js";
-import Post from "../models/postModel.js";
-import { posts } from "../demoData/Data.js";
 
 const dbConnect = async () => {
   try {
