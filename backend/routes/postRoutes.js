@@ -40,4 +40,7 @@ router.post("/:postId/comments", protect, createComment);
 //delete
 router.delete("/delete", protect, deletePost);
 
+//routes for react native
+router.post("/allpostapp", protect, getFeedPosts);
+
 export default router;

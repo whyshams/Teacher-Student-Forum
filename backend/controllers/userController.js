@@ -8,7 +8,7 @@ const userAuth = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ username });
   if (user && (await user.matchPass(password))) {
-    generateToken(res, user._id);
+    const token = generateToken(res, user._id);
     res.status(200).json({
       _id: user._id,
       name: user.name,
@@ -16,6 +16,7 @@ const userAuth = asyncHandler(async (req, res) => {
       username: user.username,
       picturePath: user.picturePath,
       role: user.role,
+      token,
     });
   } else {
     res.status(400);

@@ -1,9 +1,10 @@
 import Post from "../models/postModel.js";
 import User from "../models/userModel.js";
 import generateToken from "../utils/generateToken.js";
+import asyncHandler from "express-async-handler";
 
 /* CREATE */
-export const createPost = async (req, res) => {
+export const createPost = asyncHandler(async (req, res) => {
   try {
     const { userId, description, picturePath } = req.body;
     const user = await User.findById(userId);
@@ -29,9 +30,9 @@ export const createPost = async (req, res) => {
   } catch (err) {
     res.status(409).json({ message: err.message });
   }
-};
+});
 //Update
-export const editPost = async (req, res) => {
+export const editPost = asyncHandler(async (req, res) => {
   try {
     const { postId, description, picturePath } = req.body;
 
@@ -51,11 +52,11 @@ export const editPost = async (req, res) => {
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
-};
+});
 
 //Delete
 
-export const deletePost = async (req, res) => {
+export const deletePost = asyncHandler(async (req, res) => {
   const postId = req.body._id;
 
   try {
@@ -71,20 +72,18 @@ export const deletePost = async (req, res) => {
       .status(500)
       .json({ error: "An error occurred while deleting the user" });
   }
-};
+});
 
 /* READ */
-export const getFeedPosts = async (req, res) => {
+export const getFeedPosts = asyncHandler(async (req, res) => {
   try {
     const post = await Post.find();
-    if (post) {
-      generateToken(res, post.userId);
-      res.status(200).json(post);
-    }
+
+    res.status(200).json(post);
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
-};
+});
 
 // Get a single post by its ID
 export const getPostById = async (req, res) => {
